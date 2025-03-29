@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Green Horizon - Waste Management </title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="resources/posts.js"></script>
+  <style type="text/css">
+  	body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #2e8b57, #3cb371, #228b22);
+}
+.main{
+	width: 480px;
+	height: 570px;
+	background: red;
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+	background-color: forestgreen;
+}
+#chk{
+	display: none;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+}
+label{
+	color: #fff;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
+	margin: 50px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+input, select{
+	width: 60%;
+	height: 12px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 12px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+button{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 30px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+button:hover{
+	background: #6d44b8;
+}
+.login{
+	height: 490px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.login label{
+	color: #573b8a;
+	transform: scale(.6);
+}
+
+#chk:checked ~ .login{
+	transform: translateY(-570px);
+}
+#chk:checked ~ .login label{
+	transform: scale(1);	
+}
+#chk:checked ~ .signup label{
+	transform: scale(.6);
+}
+.side_title{
+	width: 400px;
+}
+.side_title_block{
+	width: 350px;
+	color: white;
+}
+.side_title_block h3{
+	margin: 8px 0px;
+}
+.side_title_block p{
+	margin: 2px 0px;
+}
+
+
+  </style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="side_title">
+		<h1>GREEN HORIZON</h1>
+		<div class="side_title_block">
+				<h3>Scheduled Pickup</h3>
+				<p>To easily arrange a convenient pickup time, ensuring timely and efficient waste collection tailored to your needs.</p>	
+		</div>
+		<div class="side_title_block">
+				<h3>Safe Disposal</h3>
+				<p>Environmentally responsible and secure removal of waste, adhering to all safety regulations and promoting sustainability.</p>	
+		</div>
+		<div class="side_title_block">
+				<h3>Extensive Recycling</h3>
+				<p>Covers a wide range of materials, ensuring that all recyclable items are properly sorted and processed to reduce waste and promote sustainability.</p>	
+		</div>
+		
+	</div>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+                            <form id="signupForm">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="username" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="password" name="cpswd" placeholder="Confirm Password" required="">
+                                        <select name="userrole" required="">
+                                            <option value="">Select a Role</option>
+                                            <option value="customer">Customer</option>
+                                            <option value="agency">Agency</option>
+                                        </select>
+                                        <button id="regBtn">Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+                            <form id="loginForm">
+					<label for="chk" aria-hidden="true">Login</label>
+                                        <input type="text" name="username" placeholder="Username" required="">
+					<input type="password" name="userpass" placeholder="Password" required="">
+                                        <button id="loginBtn">Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+<script>
+    $(document).ready(function(){
+            $("#loginBtn").on("click", function(event){
+                event.preventDefault();
+                var formData = $("#loginForm").serializeArray(); //Form Data serialised
+                loginAction(formData); //Calling the function to post data
+                $('#loginForm')[0].reset(); 
+            });
+            $("#regBtn").on("click", function(event){
+                event.preventDefault();
+                var formData = $("#signupForm").serializeArray(); //Form Data serialised
+                regAction(formData); //Calling the function to post data
+                $('#signupForm')[0].reset(); 
+            });
+        });
+</script>
+</html>
